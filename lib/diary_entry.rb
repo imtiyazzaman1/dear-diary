@@ -1,11 +1,12 @@
 require 'pg'
 
 class DiaryEntry
-  attr_reader :title, :id
+  attr_reader :title, :id, :body
 
-  def initialize(id, title)
+  def initialize(id:, title:, body: "")
     @id = id
     @title = title
+    @body = body
   end
 
   def self.all
@@ -16,6 +17,6 @@ class DiaryEntry
     end
 
     result = connection.exec('SELECT * FROM diary_entries')
-    result.map { |entry| DiaryEntry.new(entry['id'], entry['title']) }
+    result.map { |entry| DiaryEntry.new(id: entry['id'], title: entry['title'], body: entry['body']) }
   end
 end

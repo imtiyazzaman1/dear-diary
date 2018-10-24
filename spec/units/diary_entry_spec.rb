@@ -1,13 +1,18 @@
 require 'diary_entry'
 describe DiaryEntry do
+  subject {
+   described_class.new(id: 1, title: 'Entry 1', body: 'This is entry 1')
+  }
   it "should have a title" do
-    entry = described_class.new(1, 'Entry 1')
-    expect(entry.title).to eq('Entry 1')
+    expect(subject.title).to eq('Entry 1')
   end
 
   it "should have an id" do
-    entry = described_class.new(1, 'Entry 1')
-    expect(entry.id).to eq(1)
+    expect(subject.id).to eq(1)
+  end
+
+  it "should have a body" do
+    expect(subject.body).to eq('This is entry 1')
   end
 
   describe '#self.all' do
