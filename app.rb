@@ -4,7 +4,7 @@ require 'sinatra/base'
 class Diary < Sinatra::Base
 
   get '/' do
-    'Diary'
+    erb :index
   end
 
   get '/diary' do

@@ -6,7 +6,8 @@ feature 'Viewing diary entry titles' do
         ('Entry 2'),
         ('Entry 3');")
 
-    visit '/diary'
+    visit '/'
+    click_button 'View Diary'
     expect(page).to have_content 'Entry 1'
     expect(page).to have_content 'Entry 2'
     expect(page).to have_content 'Entry 3'
