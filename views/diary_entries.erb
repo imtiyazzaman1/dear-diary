@@ -1,1 +1,3 @@
-<%= @entries %>
+<% @entries.each do |entry| %>
+<%= entry.title %><br>
+<% end %>

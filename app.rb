@@ -8,7 +8,7 @@ class Diary < Sinatra::Base
   end
 
   get '/diary' do
-    @entries = DiaryEntry.all.join(" ")
+    @entries = DiaryEntry.all
     erb :diary_entries
   end
 
