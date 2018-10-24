@@ -1,3 +1,6 @@
 <% @entries.each do |entry| %>
-<%= entry.title %><br>
+<p>
+<a href='/view_entry?id=<%= entry.id %>'><%= entry.title %></a>
+
+</p>
 <% end %>
