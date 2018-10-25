@@ -48,4 +48,16 @@ describe DiaryEntry do
       expect(DiaryEntry.all).to be_empty
     end
   end
+
+  describe '#self.update' do
+    it "should update an exisiting entry in the ddb" do
+      Database.connect.exec("INSERT INTO diary_entries (id, title, body)
+        VALUES ('8','Entry 8', 'This is entry 7');"
+      )
+
+      DiaryEntry.update('8', 'Entry 8', 'Correction! This is entry 8')
+
+      expect(DiaryEntry.all[0].body).to eq 'Correction! This is entry 8'
+    end
+  end
 end

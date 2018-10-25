@@ -25,4 +25,12 @@ class DiaryEntry
       WHERE id = '#{id}'"
     )
   end
+
+  def self.update(id, new_title, new_body)
+    Database.connect.exec("UPDATE diary_entries
+      SET title = '#{new_title}',
+      body = '#{new_body}'
+      WHERE id = '#{id}'"
+    )
+  end
 end
