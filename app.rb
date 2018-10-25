@@ -2,7 +2,7 @@ require './lib/diary_entry'
 require 'sinatra/base'
 
 class Diary < Sinatra::Base
-
+  enable :method_override
   get '/' do
     erb :index
   end
@@ -13,7 +13,6 @@ class Diary < Sinatra::Base
   end
 
   get '/view_entry' do
-    p params[:id]
     entries = DiaryEntry.all
     @entry = entries.select { |entry|
       entry.id == params[:id]
@@ -25,12 +24,11 @@ class Diary < Sinatra::Base
     erb :write_entry
   end
 
-  get '/update_entry' do
-    p params
+  patch '/entry/:id' do
     @entry = DiaryEntry.all.select { |entry|
       entry.id == params[:id]
     }.reduce
-    p @entry
+    @entry
     erb :update_entry
   end
 
@@ -40,7 +38,7 @@ class Diary < Sinatra::Base
     redirect to '/diary'
   end
 
-  post '/delete_entry' do
+  delete '/entry/:id' do
     DiaryEntry.delete(params[:id])
     redirect to '/diary'
   end

@@ -7,7 +7,7 @@ feature "Updating an entry" do
     click_button 'Save'
 
     click_link 'Entry 8'
-    click_link 'Update Entry'
+    click_button 'Update'
     fill_in :body, with: 'Correction! This is entry 8'
     click_button 'Save'
 

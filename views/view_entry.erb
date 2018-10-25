@@ -2,9 +2,12 @@
 
 <p><%= @entry.body  %></p>
 
-<a href="/update_entry?id=<%= @entry.id %>">Update Entry</a>
-<br>
-<br>
-<form action='/delete_entry?id=<%= @entry.id %>' method='post'>
+<form action="/entry/<%= @entry.id %>" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+  <input type="submit" value="Update">
+</form>
+
+<form action='/entry/<%= @entry.id %>' method='post'>
+  <input type="hidden" name="_method" value="DELETE">
   <input type='submit' value='Delete Entry'>
 </form>
