@@ -8,9 +8,8 @@ feature "Viewing a full diary entry" do
       visit '/'
       click_button 'View Diary'
 
+      expect(page).to have_content 'Entry 1'
       click_link 'Entry 1'
       expect(page).to have_content 'This is entry 1'
-      
-
   end
 end
