@@ -1,4 +1,4 @@
-require 'pg'
+require_relative 'database'
 
 class DiaryEntry
   attr_reader :title, :id, :body
@@ -10,24 +10,12 @@ class DiaryEntry
   end
 
   def self.all
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'diary_test')
-    else
-      connection = PG.connect(dbname: 'diary')
-    end
-
-    result = connection.exec('SELECT * FROM diary_entries')
+    result = Database.connect.exec('SELECT * FROM diary_entries')
     result.map { |entry| DiaryEntry.new(id: entry['id'], title: entry['title'], body: entry['body']) }
   end
 
   def self.create(title, body)
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'diary_test')
-    else
-      connection = PG.connect(dbname: 'diary')
-    end
-
-    connection.exec("INSERT INTO diary_entries (title, body)
+    Database.connect.exec("INSERT INTO diary_entries (title, body)
       VALUES ('#{title}', '#{body}');"
     )
   end
