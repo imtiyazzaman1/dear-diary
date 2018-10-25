@@ -19,4 +19,16 @@ class DiaryEntry
     result = connection.exec('SELECT * FROM diary_entries')
     result.map { |entry| DiaryEntry.new(id: entry['id'], title: entry['title'], body: entry['body']) }
   end
+
+  def self.create(title, body)
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'diary_test')
+    else
+      connection = PG.connect(dbname: 'diary')
+    end
+
+    connection.exec("INSERT INTO diary_entries (title, body)
+      VALUES ('#{title}', '#{body}');"
+    )
+  end
 end

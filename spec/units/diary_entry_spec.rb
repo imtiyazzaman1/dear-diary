@@ -25,10 +25,18 @@ describe DiaryEntry do
           ('3', 'Entry 3');"
       )
 
-
       expect(DiaryEntry.all[0].id).to eq ('1')
       expect(DiaryEntry.all[1].id).to eq ('2')
       expect(DiaryEntry.all[2].id).to eq ('3')
+    end
+  end
+
+  describe '#self.create' do
+    it "should add an entry to the database" do
+      DiaryEntry.create('Entry 4', 'This is entry 4')
+
+      expect(DiaryEntry.all[0].title).to eq 'Entry 4'
+      expect(DiaryEntry.all[0].body).to eq 'This is entry 4'
     end
   end
 end
