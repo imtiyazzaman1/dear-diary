@@ -17,7 +17,17 @@ class Diary < Sinatra::Base
     entry = entries.select { |entry|
       entry.id == params[:id]
     }
-    p @entry = entry[0]
+    @entry = entry.reduce
     erb :view_entry
+  end
+
+  get '/add_entry' do
+    erb :write_entry
+  end
+
+  post '/save_entry' do
+    p params[:title]
+    DiaryEntry.create(params[:title], params[:body])
+    redirect to '/diary'
   end
 end
