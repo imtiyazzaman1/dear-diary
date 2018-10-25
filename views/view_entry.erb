@@ -1,3 +1,7 @@
 <h2><%= @entry.title %></h2>
 
 <p><%= @entry.body  %></p>
+
+<form action='/delete_entry?id=<%= @entry.id %>' method=post>
+  <input type='submit' value='Delete Entry'>
+</form>
