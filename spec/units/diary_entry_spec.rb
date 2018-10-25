@@ -17,7 +17,7 @@ describe DiaryEntry do
 
   describe '#self.all' do
     it "should return the title of each diary entry" do
-      connection = Database.connect.exec("INSERT INTO diary_entries (id, title)
+      Database.connect.exec("INSERT INTO diary_entries (id, title)
         VALUES ('1','Entry 1'),
           ('2', 'Entry 2'),
           ('3', 'Entry 3');"
@@ -35,6 +35,17 @@ describe DiaryEntry do
 
       expect(DiaryEntry.all[0].title).to eq 'Entry 4'
       expect(DiaryEntry.all[0].body).to eq 'This is entry 4'
+    end
+  end
+
+  describe '#self.delete' do
+    it "should delete an entry from the database" do
+      Database.connect.exec("INSERT INTO diary_entries (id, title, body)
+        VALUES ('7','Entry 7', 'This is entry 7');"
+      )
+
+      DiaryEntry.delete('7')
+      expect(DiaryEntry.all).to be_empty
     end
   end
 end

@@ -19,4 +19,10 @@ class DiaryEntry
       VALUES ('#{title}', '#{body}');"
     )
   end
+
+  def self.delete(id)
+    Database.connect.exec("DELETE FROM diary_entries
+      WHERE id = '#{id}'"
+    )
+  end
 end
