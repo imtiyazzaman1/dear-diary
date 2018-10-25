@@ -26,8 +26,13 @@ class Diary < Sinatra::Base
   end
 
   post '/save_entry' do
-    p params[:title]
     DiaryEntry.create(params[:title], params[:body])
+    redirect to '/diary'
+  end
+
+  post '/delete_entry' do
+    p params
+    DiaryEntry.delete(params[:id])
     redirect to '/diary'
   end
 end
