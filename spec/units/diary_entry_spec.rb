@@ -17,9 +17,7 @@ describe DiaryEntry do
 
   describe '#self.all' do
     it "should return the title of each diary entry" do
-      connection = PG.connect(dbname: 'diary_test')
-
-      connection.exec("INSERT INTO diary_entries (id, title)
+      connection = Database.connect.exec("INSERT INTO diary_entries (id, title)
         VALUES ('1','Entry 1'),
           ('2', 'Entry 2'),
           ('3', 'Entry 3');"
