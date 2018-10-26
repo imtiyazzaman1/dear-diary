@@ -1,12 +1,15 @@
 require_relative 'database'
+require_relative 'comment'
+
 
 class DiaryEntry
-  attr_reader :title, :id, :body
+  attr_reader :title, :id, :body, :comments
 
-  def initialize(id:, title:, body: "")
+  def initialize(id:, title:, body: "", comments: Comment.all(entry_id: id))
     @id = id
     @title = title
     @body = body
+    @comments = comments
   end
 
   def self.all

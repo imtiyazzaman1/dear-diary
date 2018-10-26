@@ -60,4 +60,12 @@ describe DiaryEntry do
       expect(DiaryEntry.all[0].body).to eq 'Correction! This is entry 8'
     end
   end
+
+  describe '#comments' do
+    let(:comment_1) { double :comment_1 }
+    it "should contain any comments associated with it " do
+      entry = DiaryEntry.new(id: '1', title: 'Entry 1', body: 'This is entry 1', comments: [comment_1])
+      expect(entry.comments).to include comment_1
+    end
+  end
 end
