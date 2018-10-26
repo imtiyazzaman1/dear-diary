@@ -11,7 +11,7 @@ class DiaryEntry
   end
 
   def self.all
-    result = DatabaseConnection.query('SELECT * FROM diary_entries')
+    result = DatabaseConnection.query('SELECT * FROM diary_entries ORDER BY id')
     result.map { |entry| DiaryEntry.new(id: entry['id'], title: entry['title'], body: entry['body']) }
   end
 
