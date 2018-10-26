@@ -1,8 +1,15 @@
-<h1>Welcome to Dear Diary</h1>
-<form action="/diary">
-  <input type="submit" value="View Diary"/>
-</form>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-<form action="/add_entry">
-  <input type="submit" value="Add Entry"/>
-</form>
+<div class="container">
+  <div class="jumbotron">
+    <h1>Dear Diary</h1>
+  </div>
+
+  <form action="/diary">
+    <input class="btn btn-info" type="submit" value="View Diary"/>
+  </form>
+
+  <form action="/add_entry">
+    <input class="btn btn-info" type="submit" value="Add Entry"/>
+  </form>
+</div>
