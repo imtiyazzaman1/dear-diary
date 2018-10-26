@@ -1,5 +1,4 @@
 require 'database_connection'
-require 'pry'
 
 describe DatabaseConnection do
   describe '.setup' do
