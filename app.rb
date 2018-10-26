@@ -14,7 +14,7 @@ class Diary < Sinatra::Base
     erb :diary_entries
   end
 
-  get '/view_entry' do
+  get '/view_entry/:id' do
     entries = DiaryEntry.all
     @entry = entries.select { |entry|
       entry.id == params[:id]
@@ -43,5 +43,10 @@ class Diary < Sinatra::Base
   delete '/entry/:id' do
     DiaryEntry.delete(params[:id])
     redirect to '/diary'
+  end
+
+  post '/comment/:id' do
+    Comment.add(text: params[:comment], entry_id: params[:id])
+    redirect to "/view_entry/#{params[:id]}"
   end
 end

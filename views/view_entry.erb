@@ -17,3 +17,10 @@
 <% @entry.comments.each do |comment| %>
 <p><%= comment.text %></p>
 <% end %>
+
+<form action="/comment/<%= @entry.id %>" method="post">
+  <label for="comment">Comment</label>
+
+  <input type="text" name="comment">
+  <input type="submit" value="Comment">
+</form>
