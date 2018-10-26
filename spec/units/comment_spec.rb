@@ -2,7 +2,7 @@ require 'comment'
 describe Comment do
 
   before(:each) {
-    Database.connect.exec("INSERT INTO diary_entries (id, title, body)
+    DatabaseConnection.query("INSERT INTO diary_entries (id, title, body)
       VALUES ('1','Entry 1', 'This is entry 1');"
     )
   }
@@ -22,7 +22,7 @@ describe Comment do
   describe '::all' do
     it "should return all of the comments related to a diary entry " do
 
-      Database.connect.exec("INSERT INTO comments (text, entry_id) VALUES ('This is the first comment for entry 1', '1');"
+      DatabaseConnection.query("INSERT INTO comments (text, entry_id) VALUES ('This is the first comment for entry 1', '1');"
       )
 
       expect(Comment.all(entry_id: '1')[0].text).to eq 'This is the first comment for entry 1'

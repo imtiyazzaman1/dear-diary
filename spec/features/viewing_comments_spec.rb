@@ -1,10 +1,10 @@
 feature "Viewing comment" do
   scenario "when view a diary entry" do
-    Database.connect.exec("INSERT INTO diary_entries (id, title, body)
+    DatabaseConnection.query("INSERT INTO diary_entries (id, title, body)
       VALUES ('1','Entry 1', 'This is entry 1');"
     )
 
-    Database.connect.exec("INSERT INTO comments (text, entry_id) VALUES ('This is the first comment for entry 1', '1');"
+    DatabaseConnection.query("INSERT INTO comments (text, entry_id) VALUES ('This is the first comment for entry 1', '1');"
     )
 
     visit '/'

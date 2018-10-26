@@ -8,7 +8,7 @@ class Comment
   end
 
   def self.all(entry_id:)
-    result = Database.connect.exec("SELECT * FROM comments
+    result = DatabaseConnection.query("SELECT * FROM comments
       WHERE entry_id = '#{entry_id}'"
     )
     result.map { |comment|
@@ -19,7 +19,7 @@ class Comment
   end
 
   def self.add(text:, entry_id:)
-    Database.connect.exec("INSERT INTO comments (text, entry_id)
+    DatabaseConnection.query("INSERT INTO comments (text, entry_id)
       VALUES ('#{text}', '#{entry_id}')")
   end
 end

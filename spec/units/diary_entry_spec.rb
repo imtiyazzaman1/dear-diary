@@ -17,7 +17,7 @@ describe DiaryEntry do
 
   describe '#self.all' do
     it "should return the title of each diary entry" do
-      Database.connect.exec("INSERT INTO diary_entries (id, title)
+      DatabaseConnection.query("INSERT INTO diary_entries (id, title)
         VALUES ('1','Entry 1'),
           ('2', 'Entry 2'),
           ('3', 'Entry 3');"
@@ -40,7 +40,7 @@ describe DiaryEntry do
 
   describe '#self.delete' do
     it "should delete an entry from the database" do
-      Database.connect.exec("INSERT INTO diary_entries (id, title, body)
+      DatabaseConnection.query("INSERT INTO diary_entries (id, title, body)
         VALUES ('7','Entry 7', 'This is entry 7');"
       )
 
@@ -51,7 +51,7 @@ describe DiaryEntry do
 
   describe '#self.update' do
     it "should update an exisiting entry in the ddb" do
-      Database.connect.exec("INSERT INTO diary_entries (id, title, body)
+      DatabaseConnection.query("INSERT INTO diary_entries (id, title, body)
         VALUES ('8','Entry 8', 'This is entry 7');"
       )
 
