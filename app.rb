@@ -2,7 +2,6 @@ require './database_connection_setup'
 require './lib/diary_entry'
 require 'sinatra/base'
 
-
 class Diary < Sinatra::Base
   enable :method_override
   get '/' do

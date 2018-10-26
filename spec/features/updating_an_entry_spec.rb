@@ -13,7 +13,5 @@ feature "Updating an entry" do
 
     click_link 'Entry 8'
     expect(page).to have_content "Entry 8\nCorrection! This is entry 8"
-
-
   end
 end
