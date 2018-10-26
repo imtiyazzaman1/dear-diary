@@ -7,7 +7,7 @@ class Comment
     @entry_id = entry_id
   end
 
-  def self.all(entry_id)
+  def self.all(entry_id:)
     result = Database.connect.exec("SELECT * FROM comments
       WHERE entry_id = '#{entry_id}'"
     )

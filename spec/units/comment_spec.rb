@@ -25,8 +25,8 @@ describe Comment do
       Database.connect.exec("INSERT INTO comments (text, entry_id) VALUES ('This is the first comment for entry 1', '1');"
       )
 
-      expect(Comment.all('1')[0].text).to eq 'This is the first comment for entry 1'
-      expect(Comment.all('1')[0].entry_id).to eq '1'
+      expect(Comment.all(entry_id: '1')[0].text).to eq 'This is the first comment for entry 1'
+      expect(Comment.all(entry_id: '1')[0].entry_id).to eq '1'
     end
   end
 
@@ -34,7 +34,7 @@ describe Comment do
     it "should add a new comment to the database" do
       Comment.add(text: 'This is another comment for entry 1', entry_id: '1')
 
-      expect(Comment.all('1')[0].text).to eq 'This is another comment for entry 1'
+      expect(Comment.all(entry_id: '1')[0].text).to eq 'This is another comment for entry 1'
     end
   end
 end
